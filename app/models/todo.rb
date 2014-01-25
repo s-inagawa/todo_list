@@ -1,3 +1,3 @@
 class Todo < ActiveRecord::Base
-  belengs_to :schedule
+#  belengs_to :schedule
 end
