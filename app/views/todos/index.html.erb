@@ -8,24 +8,26 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:schedule_id) %></th>
+      <th><%= model_class.human_attribute_name(:category_id) %></th>
       <th><%= model_class.human_attribute_name(:detail) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:end_at) %></th>
+      <th><%= model_class.human_attribute_name(:priority) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @todos.each do |todo| %>
       <tr>
-        <td><%= link_to todo.id, todo_path(todo) %></td>
-        <td><%= todo.schedule_id %></td>
+        <td><%= link_to todo.subject, user_todo_path(@user, todo) %></td>
+        <td><%= todo.priority %></td>
+        <td><%= todo.category_id %></td>
         <td><%= todo.detail %></td>
-        <td><%=l todo.created_at %></td>
+        <td><%=l todo.end_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_todo_path(todo), :class => 'btn btn-mini' %>
+                      edit_user_todo_path(@user, todo), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      todo_path(todo),
+                      user_todo_path(@user, todo),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>

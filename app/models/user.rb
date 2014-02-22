@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :categories
-  has_many :todos
+  has_many :todo
 
   validates :last_name, presence: true
   validates :last_name, :first_name, length: {maximum: 100}
