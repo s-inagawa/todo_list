@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates :last_name, presence: true
   validates :last_name, :first_name, length: {maximum: 100}
-  validates :email, :sub_email, format: {with: /\A[A-Z0-9%\.\_\-\+]*@((?:[-a-z0-9]+.)+[a-z]{2,})\Z/ }
+  validates :email, :sub_email, format: {with: /\A[A-Z0-9%\.\_\-\+]*@((?:[-a-z0-9]+.)+[a-z]{2,})\Z/i }, allow_blank: true
   validates :email, uniqueness: true
   validates :last_name_kana, :first_name_kana, format: {with: /\A[\p{katakana}ー－]+\Z/}, allow_blank: true
 
