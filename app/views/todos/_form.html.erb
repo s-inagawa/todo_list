@@ -10,7 +10,7 @@
     </div>
     <%= f.label :end_at, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :end_at, :class => 'text_field' %>
+      <%= f.text_field :end_at, :class => 'text_field',"data-behaviour" => "datepicker" %>
     </div>
   </div>
 
@@ -20,3 +20,8 @@
                 user_todos_path, :class => 'btn' %>
   </div>
 <% end -%>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('[data-behaviour~=datepicker]').datepicker();
+      })
+</script>
