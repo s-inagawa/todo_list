@@ -1,6 +1,8 @@
 TodoList::Application.routes.draw do
-  resources :schedules
-  resources :todos
+  resources :users do
+    resources :categories
+    resources :todos
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

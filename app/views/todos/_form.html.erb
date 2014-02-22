@@ -1,20 +1,22 @@
-<%= form_for @todo, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for([@user, @todo]) do |f| %>
   <div class="control-group">
-    <%= f.label :schedule_id, :class => 'control-label' %>
+    <%= f.label :subject, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :schedule_id, :class => 'text_field' %>
+      <%= f.text_field :subject, :class => 'text_field' %>
     </div>
-  </div>
-  <div class="control-group">
     <%= f.label :detail, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :detail, :class => 'text_field' %>
+      <%= f.text_area :detail, :class => 'text_field' %>
+    </div>
+    <%= f.label :end_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_at, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                todos_path, :class => 'btn' %>
+                user_todos_path, :class => 'btn' %>
   </div>
-<% end %>
+<% end -%>

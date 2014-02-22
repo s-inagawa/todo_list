@@ -11,18 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125061724) do
+ActiveRecord::Schema.define(version: 20140222013252) do
 
-  create_table "schedules", force: true do |t|
-    t.date     "subject"
+  create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "todos", force: true do |t|
-    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "subject"
     t.string   "detail"
+    t.datetime "end_at"
+    t.integer  "juni"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "last_name_kana"
+    t.string   "first_name_kana"
+    t.string   "email"
+    t.string   "sub_email"
+    t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
