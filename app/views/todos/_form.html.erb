@@ -1,4 +1,6 @@
 <%= form_for([@user, @todo]) do |f| %>
+  <%= render '/layouts/error', {:obj => @todo, :title_name => "title.todo"} %>
+
   <div class="control-group">
     <%= f.label :subject, :class => 'control-label' %>
     <div class="controls">

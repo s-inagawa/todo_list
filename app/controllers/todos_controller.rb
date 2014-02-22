@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_user
+  before_action :set_belong_user
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
   # GET /todos
@@ -29,7 +29,7 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      redirect_to @todo, notice: 'Todo was successfully created.'
+      redirect_to [@user, @todo], notice: 'Todo was successfully created.'
     else
       render action: 'new'
     end
@@ -54,10 +54,6 @@ class TodosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:user_id])
-    end
-
     def set_todo
       @todo = Todo.find(params[:id])
     end
