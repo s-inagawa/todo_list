@@ -1,5 +1,6 @@
 class Todo < ActiveRecord::Base
-#  belengs_to :schedule
   belongs_to :user
   belongs_to :category
+
+  validates :subject, presence: true
 end

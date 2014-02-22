@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140222013252) do
     t.string   "subject"
     t.string   "detail"
     t.datetime "end_at"
-    t.integer  "juni"
+    t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
