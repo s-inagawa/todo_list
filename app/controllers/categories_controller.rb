@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = @user.categories
+    @categories ||= []
   end
 
   # GET /categories/1
@@ -15,7 +16,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = @user.category.new(user_id: params[:user_id])
+    @category = @user.categories.new(user_id: params[:user_id])
   end
 
   # GET /categories/1/edit
@@ -28,7 +29,7 @@ class CategoriesController < ApplicationController
     @category = @user.categories.new(category_params)
 
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created.'
+      redirect_to [@user, @category], notice: 'Category was successfully created.'
     else
       render action: 'new'
     end
@@ -38,7 +39,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
+      redirect_to [@user, @category], notice: 'Category was successfully updated.'
     else
       render action: 'edit'
     end
@@ -48,13 +49,13 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category.destroy
-    redirect_to categories_url
+    redirect_to user_categories_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = @user.category.find(params[:id])
+      @category = @user.categories.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
